@@ -1,4 +1,5 @@
 let itensDaCompra = []; 
+let selecionados = [];
 
 function listar() {
     const inputListaDeCompra = document.getElementById('inputListaDeCompra');
@@ -19,7 +20,7 @@ function listar() {
         const name = `${indice}-${itensDaCompra[indice]}`;
         conteudo += `
             <li>
-                <input type="checkbox" id="${name}" class="item" name="${name}" onchange="valorCheckbox(this)" />
+                <input type="checkbox" id="${name}" class="item" name="${name}" onchange="valorCheckbox(${indice}, this)" />
                 <label for="${name}">${itensDaCompra[indice]}</label>
             </li>`;
     }
@@ -30,9 +31,22 @@ function listar() {
 
 } 
 
-function valorCheckbox(elemento) {
-    console.log(elemento.checked);
 
+
+function valorCheckbox(valor, elemento) {
+    const contador = document.getElementById('contador');
+    
+    if(elemento.checked){
+        selecionados.push(valor);
+        
+    }else{
+        selecionados = selecionados.filter(function(marcado){
+            return marcado !== valor;
+        });
+
+    };
+        
+    contador.innerHTML = `${selecionados.length} iten(s) selecionados`;
+        
 }
-
 
