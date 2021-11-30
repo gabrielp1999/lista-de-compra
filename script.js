@@ -28,7 +28,8 @@ function listar() {
     conteudo += "</ul>";
     
     compras.innerHTML = conteudo;
-
+    
+    document.getElementById('inputListaDeCompra').value = "";
 } 
 
 
@@ -46,7 +47,7 @@ function valorCheckbox(valor, elemento) {
 
     };
         
-    contador.innerHTML = `${selecionados.length} iten(s) selecionados`;
+    contador.innerHTML = `${selecionados.length} iten(s) no carrinho`;
         
 }
 
